@@ -1,13 +1,15 @@
 const container = document.querySelector('.container');
 // const childdiv = document.querySelectorAll('.childdiv');
-const colorPicker = document.querySelector('.colorPicker');
+const pickColor = document.querySelector('#pickColor');
+
 let color = 'black';
 const width = 500/64;
 const height = 500/64;
 let isToggle = false;
 
-colorPicker.addEventListener('click', (e)=>{
-    color = prompt('enter the color name'); 
+pickColor.addEventListener('change', (e)=>{
+    // console.log(pickColor.value);
+    color = pickColor.value;
 });
 
 for(let i=0; i<64; i++){
