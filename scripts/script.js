@@ -12,3 +12,23 @@ for(let i=0; i<64; i++){
     container.appendChild(div);
 }
 }
+
+const childdiv = document.querySelectorAll('.childdiv');
+
+function mouseDown(){
+  isToggle = true;
+}
+
+function mouseUp(){
+  isToggle = false;
+}
+
+
+childdiv.forEach(div=>div.addEventListener('mouseenter', (e)=>{
+  e.target.addEventListener('mousedown', mouseDown);
+  if(isToggle){
+    e.target.classList.add('style');
+  }
+  e.target.addEventListener('mouseup', mouseUp);
+  // console.log(e);
+}));
