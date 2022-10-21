@@ -3,24 +3,33 @@ const container = document.querySelector('.container');
 const pickColor = document.querySelector('#pickColor');
 const colorButton = document.querySelector('.colorButton');
 const clearButton = document.querySelector('.clearButton');
+const rainbowMode = document.querySelector('.rainbowMode');
+
 let childdiv;
 
 let color = pickColor.value;
 const width = 500/64;
 const height = 500/64;
 let isToggle = false;
+let randomColor = false;
 
 colorButton.addEventListener('click', (e)=>{
+  randomColor = false;
   pickColor.click();
   pickColor.addEventListener('change', (e)=>{
     color = pickColor.value;
   });
 });
 
-// pickColor.addEventListener('change', (e)=>{
-//     // console.log(pickColor.value);
-//     color = pickColor.value;
-// });
+rainbowMode.addEventListener('click', (e)=>{
+  randomColor = true;
+  // while(colorMode){
+  //   color = `rgb(${Math.floor(Math.random()*256)}, ${Math.floor(Math.random()*256)}, ${Math.floor(Math.random()*256)})`;
+  // }
+  
+  console.log(color);
+});
+
 function makeSketchPad(){
   container.innerHTML = '';
   for(let i=0; i<64; i++){
@@ -56,7 +65,11 @@ function mouseMovement(){
     e.target.addEventListener('mousedown', mouseDown);
     if(isToggle){
       // e.target.classList.add('style');
-      e.target.style.backgroundColor = `${color}`;
+      if(randomColor){
+        e.target.style.backgroundColor = `rgb(${Math.floor(Math.random()*256)}, ${Math.floor(Math.random()*256)}, ${Math.floor(Math.random()*256)})`;
+      }else{
+        e.target.style.backgroundColor = `${color}`;
+      }
     }
     e.target.addEventListener('mouseup', mouseUp);
     // console.log(e);
