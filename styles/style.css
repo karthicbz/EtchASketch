@@ -6,6 +6,12 @@ html, body{
     height: 100%;
 }
 
+h1{
+  text-align: center;
+  margin-top: 20px;
+  text-shadow: 2px 2px gray;
+}
+
 .container{
     width: 500px;
     height: 500px;
@@ -14,6 +20,7 @@ html, body{
     /* background: pink; */
     box-shadow: 2px 2px 15px 3px gray;
     margin: 20px auto 0px;
+    border-radius: 2px;
   }
   
   .style{
@@ -28,6 +35,20 @@ html, body{
     display: flex;
     /* border: 1px solid black; */
     justify-content: center;
-    gap: 5px;
+    gap: 10px;
     margin-top: 20px;
+  }
+
+  button{
+    padding: 8px;
+    background: lightcyan;
+    border-style: none;
+    border-radius: 2px;
+    box-shadow: 1px 1px 5px 0px gray;
+  }
+
+  button:hover{
+    background: lightblue;
+    /* color: white; */
+    border-color: white;
   }

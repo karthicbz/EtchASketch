@@ -9,12 +9,15 @@
     <script src="./scripts/script.js" defer></script>
 </head>
 <body>
+    <h1>Etch-A-Sketch</h1>
     <div class="container"></div>
     <div class="controls">
         <button class="rainbowMode">Rainbow Mode</button>
         <input type="color" id="pickColor">
         <button class="colorButton">Choose Color</button>
         <button class="clearButton">Clear Sketch</button>
+        <input type="range" id="pixelSize" min="2" max="64">
+        <p class="pixelValue"></p>
     </div>
 </body>
 </html>

@@ -4,14 +4,24 @@ const pickColor = document.querySelector('#pickColor');
 const colorButton = document.querySelector('.colorButton');
 const clearButton = document.querySelector('.clearButton');
 const rainbowMode = document.querySelector('.rainbowMode');
+const pixelSize = document.querySelector('#pixelSize');
+const pixelValue = document.querySelector('.pixelValue');
+
+pixelValue.textContent = pixelSize.value+' px';
+let pixel = pixelSize.value;
 
 let childdiv;
 
 let color = pickColor.value;
-const width = 500/64;
-const height = 500/64;
 let isToggle = false;
 let randomColor = false;
+
+pixelSize.addEventListener('change', (e)=>{
+  pixelValue.textContent = pixelSize.value+' px';
+  pixel = Number(pixelSize.value);
+  makeSketchPad(pixel);
+  mouseMovement();
+})
 
 colorButton.addEventListener('click', (e)=>{
   randomColor = false;
@@ -23,19 +33,14 @@ colorButton.addEventListener('click', (e)=>{
 
 rainbowMode.addEventListener('click', (e)=>{
   randomColor = true;
-  // while(colorMode){
-  //   color = `rgb(${Math.floor(Math.random()*256)}, ${Math.floor(Math.random()*256)}, ${Math.floor(Math.random()*256)})`;
-  // }
-  
-  console.log(color);
 });
 
-function makeSketchPad(){
+function makeSketchPad(pixel){
   container.innerHTML = '';
-  for(let i=0; i<64; i++){
-    for(let j=0; j<64; j++){
+  for(let i=0; i<pixel; i++){
+    for(let j=0; j<pixel; j++){
       const div = document.createElement('div');
-      div.setAttribute('style', `width:${width}px;height:${height}px;`)
+      div.setAttribute('style', `width:${500/pixel}px;height:${500/pixel}px;`)
       div.classList.add('childdiv');
       container.appendChild(div);
   }
@@ -43,8 +48,7 @@ function makeSketchPad(){
 }
 
 clearButton.addEventListener('click', (e)=>{
-  makeSketchPad();
-  // childdiv = document.querySelectorAll('.childdiv');
+  makeSketchPad(pixel);
   mouseMovement();
 });
 
@@ -64,7 +68,6 @@ function mouseMovement(){
   childdiv.forEach(div=>div.addEventListener('mouseenter', (e)=>{
     e.target.addEventListener('mousedown', mouseDown);
     if(isToggle){
-      // e.target.classList.add('style');
       if(randomColor){
         e.target.style.backgroundColor = `rgb(${Math.floor(Math.random()*256)}, ${Math.floor(Math.random()*256)}, ${Math.floor(Math.random()*256)})`;
       }else{
@@ -72,9 +75,8 @@ function mouseMovement(){
       }
     }
     e.target.addEventListener('mouseup', mouseUp);
-    // console.log(e);
   }));
 }
 
-makeSketchPad();
+makeSketchPad(pixel);
 mouseMovement();
