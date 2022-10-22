@@ -10,7 +10,7 @@ const pixelValue = document.querySelector('.pixelValue');
 pixelValue.textContent = pixelSize.value+' px';
 let pixel = pixelSize.value;
 
-let childdiv;
+// let childdiv;
 
 let color = pickColor.value;
 let isToggle = false;
